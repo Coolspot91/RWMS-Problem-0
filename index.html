@@ -1,0 +1,33 @@
+<!--
+	Please include headers like this in your classes as it means if someone else has to work on your code
+	they know who to contact should they not understand something or run into trouble.
+	File: index.html
+	Created by: Keith Cully
+	Modified by: n/a
+	Description: The homepage for the game. Handles loading of resources and starting the game.
+!-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 5 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang=en>
+	<head>
+		<meta charset=utf-8>
+		<meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0;" />
+		<title>Space Game</title>
+	</head>
+	<body onload="init();">
+		<canvas id="canvas" width="600" height="400" style="background-color:#333333;" ></canvas>
+	</body>
+	<script type="text/javascript" src="js/Box2dWeb-2.1.a.3.min.js"></script>
+	
+	<!-- Place any classes (js files) which you need to include here. -->
+	<!-- You can then create objects of these clases in the Game class (Game.js). -->
+	
+	<script type="text/javascript" src="js/GameEntity.js"></script>
+	<script type="text/javascript" src="js/Game.js"></script>
+	<script type="text/javascript"> 
+		var game;		
+		function init() {
+			game = new Game(true);	// Change to false to turn off debug drawing.
+		};
+	</script>
+</html>
