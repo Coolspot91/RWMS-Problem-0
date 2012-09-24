@@ -6,7 +6,7 @@
 // Initalizes a new instance of the Game class.
 // Paramater list:
 // debug - whether to enable debug drawing of physics objects or not. 
-var Game = function (debug) {
+function init(debug) {
 	"use strict";
 		
 	var B2Vec2 = Box2D.Common.Math.b2Vec2
