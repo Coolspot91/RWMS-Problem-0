@@ -25,18 +25,21 @@ function init(debug) {
 	var world = new B2World( new B2Vec2(0, 0), true);	
 	var boundryWalls = [];
 	var entity;
-	
+	var spaceShip;
+
 	var stage = new Stage("canvas");
 	stage.addEventListener(Event.ENTER_FRAME, update);
 	
-	//test for drawing
-	var redLine = new Sprite();
-	stage.addChild(redLine);
 	
-	var testImageData = new BitmapData("Sprites/Black_Hole_1.png");
-	var testImage = new Bitmap(testImageData);
-	stage.addChild(testImage);
+	// Background 
+	var backGround = new Bitmap( new BitmapData("Sprites/Background.jpg") );
+	backGround.scaleX = backGround.scaleY = stage.stageHeight/512;
+	stage.addChild(backGround);
 	
+	// Ship
+	var shipImageData = new BitmapData("Sprites/Ship_3.png");
+	var ship = new Bitmap(shipImageData);	// "actor"
+	stage.addChild(ship);
 	// Creates the game's exterior boundries.
 	function createWalls() {
 		// Create fixture and body definitions.
@@ -85,17 +88,9 @@ function init(debug) {
 		physicsBody = world.CreateBody(bodyDef);
 		
 		
-		
-		
-        entity = new GameEntity(physicsBody, null);	
+        spaceShip = new GameEntity(physicsBody, ship);	
 		physicsBody.CreateFixture(fixDef);		
 		
-		// Test Draw Red line
-		redLine.graphics.lineStyle(3, 0xff0000);
-		redLine.graphics.moveTo(20, 20);
-		redLine.graphics.lineTo(400, 400);
-		
-		// Test Draw Image
 	}
 
 	// Sets up debug drawing
@@ -111,8 +106,8 @@ function init(debug) {
 	
 	// Updates the game world
 	function update() {         
-		//entity.ApplyLinearForce(new B2Vec2(-0.5, -1)); //TODO: remove (This is just a demonstration of using a GameEntity)
-	
+		spaceShip.ApplyLinearForce(new B2Vec2(-0.5, -1)); //TODO: remove (This is just a demonstration of using a GameEntity)
+	    spaceShip.Update();
 		// Update the physics world (time step, velocity iterations, position iterations).
 		world.Step(1 / 60, 10, 10);
 		// Draw the debug representation of the physics objects.
@@ -120,7 +115,7 @@ function init(debug) {
 		// Clear all forces from this frame.
 		world.ClearForces();
 		
-		entity.Update();
+		
 	}
 	
 	// Enable drawing of debug objects

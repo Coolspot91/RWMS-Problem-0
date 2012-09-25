@@ -24,8 +24,8 @@ var GameEntity = function (physicsBody, graphicsBody){
 		}
 	}
 	
-	//this.ApplyLinearForce = function(force) {
-	//	this.physicsBody.ApplyForce(force, this.physicsBody.GetWorldCenter())
-	//}
+	this.ApplyLinearForce = function(force) {
+		this.physicsBody.ApplyForce(force, this.physicsBody.GetWorldCenter())
+	}
 	
 };
