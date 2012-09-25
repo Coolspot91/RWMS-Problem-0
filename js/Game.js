@@ -8,7 +8,7 @@
 // debug - whether to enable debug drawing of physics objects or not. 
 function init(debug) {
 	"use strict";
-		
+	// This is a test of github.	
 	var B2Vec2 = Box2D.Common.Math.b2Vec2
 		,	B2BodyDef = Box2D.Dynamics.b2BodyDef
 		,	B2Body = Box2D.Dynamics.b2Body
