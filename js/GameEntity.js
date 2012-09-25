@@ -11,8 +11,21 @@ var GameEntity = function (physicsBody, graphicsBody){
 	"use strict";	
 	this.physicsBody = physicsBody;	
 	this.graphicsBody = graphicsBody;	
+	var conversion = 180/Math.PI;
 	
-	this.ApplyLinearForce = function(force) {
-		this.physicsBody.ApplyForce(force, this.physicsBody.GetWorldCenter())
+	// need update 
+	this.Update = function (){	
+		if (graphicsBody != null)
+		{
+			var position = physicsBody.GetPosition();
+			this.graphicsBody.x = position.x*100;	// updating actor
+			this.graphicsBody.y = position .y*100;
+			this.graphicsBody.rotation = this.physicsBody.GetAngle()*conversion;
+		}
 	}
+	
+	//this.ApplyLinearForce = function(force) {
+	//	this.physicsBody.ApplyForce(force, this.physicsBody.GetWorldCenter())
+	//}
+	
 };

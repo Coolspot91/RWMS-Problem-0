@@ -14,12 +14,28 @@
 		<meta name="viewport" content="width=device-width; height=device-height; initial-scale=1.0; maximum-scale=1.0;" />
 		<title>Space Game</title>
 	</head>
-	<body onload="init(true);">
+	<body onload="init(false);">
 		<canvas id="canvas" width="600" height="400" style="background-color:#333333;" ></canvas>
 	</body>
 	<script type="text/javascript" src="js/Box2dWeb-2.1.a.3.min.js"></script>
+	<script type="text/javascript" src="js/ivank.js"></script>
+	
+	
+	<!--  
+	<script type="text/javascript"
+	var stage = new Stage("canvas");
+	var blH = new BitmapData("Black_Hole_1.png");
+	var blackHole = new Bitmap(blH);
+	blackHole.x = Math.random()*900;
+	blackHole.y = Math.random()*500;
+	blackHole.rotation = Math.random()*360;
+	blackHole.scaleX = blackHole.scaleY = 0.5 + Math.random();
+	stage.addChild(blackHole);
+	></script>
+	-->
 	
 	<!-- Place any classes (js files) which you need to include here. -->
+	
 	<!-- You can then create objects of these clases in the Game class (Game.js). -->
 	
 	<script type="text/javascript" src="js/GameEntity.js"></script>

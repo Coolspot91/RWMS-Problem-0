@@ -8,6 +8,10 @@
 // debug - whether to enable debug drawing of physics objects or not. 
 function init(debug) {
 	"use strict";
+	
+	
+	
+	
 	// This is a test of github.	
 	var B2Vec2 = Box2D.Common.Math.b2Vec2
 		,	B2BodyDef = Box2D.Dynamics.b2BodyDef
@@ -21,7 +25,18 @@ function init(debug) {
 	var world = new B2World( new B2Vec2(0, 0), true);	
 	var boundryWalls = [];
 	var entity;
-		
+	
+	var stage = new Stage("canvas");
+	stage.addEventListener(Event.ENTER_FRAME, update);
+	
+	//test for drawing
+	var redLine = new Sprite();
+	stage.addChild(redLine);
+	
+	var testImageData = new BitmapData("Sprites/Black_Hole_1.png");
+	var testImage = new Bitmap(testImageData);
+	stage.addChild(testImage);
+	
 	// Creates the game's exterior boundries.
 	function createWalls() {
 		// Create fixture and body definitions.
@@ -68,8 +83,19 @@ function init(debug) {
 		fixDef.shape.SetAsBox(1, 1);
 		bodyDef.position.Set(10, 10);
 		physicsBody = world.CreateBody(bodyDef);
+		
+		
+		
+		
         entity = new GameEntity(physicsBody, null);	
 		physicsBody.CreateFixture(fixDef);		
+		
+		// Test Draw Red line
+		redLine.graphics.lineStyle(3, 0xff0000);
+		redLine.graphics.moveTo(20, 20);
+		redLine.graphics.lineTo(400, 400);
+		
+		// Test Draw Image
 	}
 
 	// Sets up debug drawing
@@ -85,7 +111,7 @@ function init(debug) {
 	
 	// Updates the game world
 	function update() {         
-		entity.ApplyLinearForce(new B2Vec2(-0.5, -1)); //TODO: remove (This is just a demonstration of using a GameEntity)
+		//entity.ApplyLinearForce(new B2Vec2(-0.5, -1)); //TODO: remove (This is just a demonstration of using a GameEntity)
 	
 		// Update the physics world (time step, velocity iterations, position iterations).
 		world.Step(1 / 60, 10, 10);
@@ -93,6 +119,8 @@ function init(debug) {
 		world.DrawDebugData();
 		// Clear all forces from this frame.
 		world.ClearForces();
+		
+		entity.Update();
 	}
 	
 	// Enable drawing of debug objects
@@ -104,5 +132,5 @@ function init(debug) {
 	// Create dynamic objects
 	createDynamicObjects();
 	// Set referesh rate to 60fps 
-	window.setInterval(update, 1000 / 60); // TODO: Change to requestAnimationFrame. This will be okay for now.
+	//window.setInterval(update, 1000 / 60); // TODO: Change to requestAnimationFrame. This will be okay for now.
 };
